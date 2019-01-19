@@ -178,40 +178,6 @@ def plot(width, height, data, host):
             u"█", column, 1, 1 + bar_height, paint=_paint
         )
 
-    stats_box = [
-        "Cur: {:6.0f}".format(filtered_data[0]),
-        "Max: {:6.0f}".format(max(filtered_data)),
-        "Min: {:6.0f}".format(min(filtered_data)),  # Filter None values
-        "Avg: {:6.0f}".format(average_ping)
-    ]
-    # creating the box for the ping information in the middle
-    midpoint = Point(
-        round(width / 2),
-        round(height / 2)
-    )
-    max_stats_len = max(len(s) for s in stats_box)
-    # Draw a box around the outside of the stats box. We do this to stop the bars from touching the text,
-    # it looks weird. We need a blank area around it.
-    stats_text = min(height - 2, midpoint.y + len(stats_box) / 2)
-    canvas.box(
-        Point(midpoint.x - round(max_stats_len / 2) - 1, stats_text + 1),
-        Point(midpoint.x + round(max_stats_len / 2) - 1, stats_text - len(stats_box)),
-        blank=True
-    )
-    # Paint each of the statistics lines
-    for idx, stat in enumerate(stats_box):
-        from_stat = midpoint.x - round(max_stats_len / 2)
-        to_stat = from_stat + len(stat)
-        if stats_text - idx >= 0:
-            canvas.horizontal_line(stat, stats_text - idx, from_stat, to_stat)
-
-    # adding the url to the top
-    if host:
-        host = " {} ".format(host)
-        from_url = midpoint.x - round(len(host) / 2)
-        to_url = from_url + len(host)
-        canvas.horizontal_line(host, height - 1, from_url, to_url)
-
     return canvas
 
 
