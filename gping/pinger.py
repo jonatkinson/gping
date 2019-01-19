@@ -152,7 +152,7 @@ def plot(width, height, data, host):
     for column, datum in enumerate(data_slice):
         if datum == -1:
             # If it's a timeout then do a red questionmark
-            canvas[column + 2, 2] = ("?", Fore.RED)
+            canvas[column + 2, 1] = ("?", Fore.RED)
             continue
 
         # Only draw a bar if the max_ping has been more than 0
