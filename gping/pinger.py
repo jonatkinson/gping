@@ -175,7 +175,7 @@ def plot(width, height, data, host):
                 return Fore.RED  # Danger zone
 
         canvas.vertical_line(
-            u"█", column + 2, 2, 2 + bar_height, paint=_paint
+            u"█", column, 1, 1 + bar_height, paint=_paint
         )
 
     stats_box = [
