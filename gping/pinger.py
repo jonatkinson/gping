@@ -123,12 +123,7 @@ class Canvas(object):
 
 def plot(width, height, data, host):
     # We space for a newline after each line, so restrict the hight/width a bit
-    width, height = width - 1, height - 1  # Our work area is slightly smaller
     canvas = Canvas(width, height)
-    # Draw a box around the edges of the screen, one character in.
-    canvas.box(
-        Point(1, 1), Point(width - 1, height - 1)
-    )
     # We use islice to slice the data because we can't do a ranged slice on a dequeue :(
     data_slice = list(islice(data, 0, width - 3))
 
